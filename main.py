@@ -1,4 +1,5 @@
 import hashlib
+import json
 
 import requests
 
@@ -56,10 +57,8 @@ def make_gravatar(source_txt, params=None):
 
 
 if __name__ == "__main__":
-    txt = 'blah blah blah'
-    params = {
-        'd': 'monsterid',
-        's': 200,
-        'r': 'x'
-    }
+    f = open('./input.json', 'r')
+    json_obj = json.load(f)
+    txt = json_obj['txt']
+    params = json_obj['params']
     make_gravatar(txt, params)
